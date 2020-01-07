@@ -27,7 +27,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cjt2325.cameralibrary.R;
 import com.cjt2325.cameralibrary.util.FileUtil;
 import com.iceteck.silicompressorr.SiliCompressor;
 import com.marvhong.videoeffect.FillMode;
@@ -41,6 +40,7 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 
+import and.fast.video.editor.R;
 import and.fast.video.eidtor.Constant;
 import and.fast.video.eidtor.adapter.TrimVideoAdapter;
 import and.fast.video.eidtor.model.VideoEditInfo;
@@ -48,9 +48,9 @@ import and.fast.video.eidtor.utils.ExtractFrameWorkThread;
 import and.fast.video.eidtor.utils.ExtractVideoInfoUtil;
 import and.fast.video.eidtor.utils.UIUtils;
 import and.fast.video.eidtor.utils.VideoUtil;
-import and.fast.video.eidtor.view.NormalProgressDialog;
-import and.fast.video.eidtor.view.RangeSeekBar;
-import and.fast.video.eidtor.view.VideoThumbSpacingItemDecoration;
+import and.fast.video.eidtor.widget.NormalProgressDialog;
+import and.fast.video.eidtor.widget.RangeSeekBar;
+import and.fast.video.eidtor.widget.VideoThumbSpacingItemDecoration;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
@@ -87,7 +87,6 @@ public class TrimVideoActivity extends AppCompatActivity {
     private int    mMaxWidth; // 可裁剪区域的最大宽度
     private long   duration; // 视频总时长
     private float  averageMsPx;// 每毫秒所占的px
-    private float  averagePxMs;// 每px所占用的ms毫秒
     private String OutPutFileDirPath;
     private long   leftProgress, rightProgress; // 裁剪视频左边区域的时间位置, 右边时间位置
     private long    scrollPos = 0;
@@ -246,7 +245,7 @@ public class TrimVideoActivity extends AppCompatActivity {
             rightProgress = endPosition;
         }
 
-        averagePxMs = (mMaxWidth * 1.0f / (rightProgress - leftProgress));
+        //averagePxMs = (mMaxWidth * 1.0f / (rightProgress - leftProgress));
         mTvStartDuration.setText(getGapTime(leftProgress));
         mTvEndDuration.setText(getGapTime(rightProgress));
     }
@@ -375,7 +374,8 @@ public class TrimVideoActivity extends AppCompatActivity {
                     @Override
                     public void onFailed(Exception exception) {
                         NormalProgressDialog.stopLoading();
-                        Toast.makeText(TrimVideoActivity.this, "视频处理失败", Toast.LENGTH_SHORT).show();
+                        exception.printStackTrace();
+                        //Toast.makeText(TrimVideoActivity.this, "视频处理失败", Toast.LENGTH_SHORT).show();
                     }
 
                 })
@@ -437,6 +437,7 @@ public class TrimVideoActivity extends AppCompatActivity {
                         }
 
                         NormalProgressDialog.stopLoading();
+                        Log.i("TrimVideoActivity", outputPath);
                         // VideoPreviewActivity.startActivity(TrimVideoActivity.this, outputPath, firstFrame);
                         finish();
                     }

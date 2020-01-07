@@ -1,4 +1,4 @@
-package and.fast.video.eidtor.view;
+package and.fast.video.eidtor.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,10 +16,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.cjt2325.cameralibrary.R;
-
 import java.text.DecimalFormat;
 
+import and.fast.video.editor.R;
 import and.fast.video.eidtor.utils.UIUtils;
 
 

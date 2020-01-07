@@ -1,4 +1,4 @@
-package and.fast.video.eidtor.view;
+package and.fast.video.eidtor.widget;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

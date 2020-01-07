@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
-import com.cjt2325.cameralibrary.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import and.fast.video.editor.R;
 import and.fast.video.eidtor.model.VideoEditInfo;
 
 public class TrimVideoAdapter extends RecyclerView.Adapter {

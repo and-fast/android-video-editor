@@ -14,13 +14,14 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.cjt2325.cameralibrary.JCameraView;
-import com.cjt2325.cameralibrary.R;
 import com.cjt2325.cameralibrary.listener.ErrorListener;
 import com.cjt2325.cameralibrary.listener.JCameraListener;
 import com.cjt2325.cameralibrary.listener.RecordStateListener;
 import com.cjt2325.cameralibrary.util.FileUtil;
 
 import java.io.File;
+
+import and.fast.video.editor.R;
 
 public class VideoCameraActivity extends AppCompatActivity {
 

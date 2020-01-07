@@ -1,4 +1,4 @@
-package and.fast.video.eidtor.view;
+package and.fast.video.eidtor.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

@@ -118,6 +118,7 @@ public class LocalVideoModel {
     public static LocalVideoModel buildVideo(Context context, String videoPath) {
         LocalVideoModel info = new LocalVideoModel();
         info.setVideoPath(videoPath);
+
         try {
             MediaPlayer mp = MediaPlayer.create(context, Uri.fromFile(new File(videoPath)));
             if (mp != null) {
@@ -127,19 +128,21 @@ public class LocalVideoModel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return info;
     }
 
     public LocalVideoModel calcDuration() {
-        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
         try {
+            MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
             mediaMetadataRetriever.setDataSource(getVideoPath());
-            String time = mediaMetadataRetriever
-                .extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            String time = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             duration = Long.parseLong(time);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return this;
     }
 }
