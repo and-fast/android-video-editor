@@ -1,1 +1,1 @@
-include ':simple', ':video-record', ':video-compressor', ':video-effect', ':video-editor'
+include ':simple', ':video-editor'

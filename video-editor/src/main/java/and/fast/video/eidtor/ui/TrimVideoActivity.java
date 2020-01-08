@@ -26,19 +26,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iceteck.silicompressorr.SiliCompressor;
-import com.marvhong.videoeffect.FillMode;
-import com.marvhong.videoeffect.GlVideoView;
-import com.marvhong.videoeffect.composer.Mp4Composer;
-import com.marvhong.videoeffect.helper.MagicFilterFactory;
-import com.marvhong.videoeffect.helper.MagicFilterType;
-import com.marvhong.videoeffect.utils.ConfigUtils;
-
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 import java.util.List;
 
+import and.fast.video.compressor.utils.SiliCompressor;
 import and.fast.video.editor.R;
+import and.fast.video.effect.FillMode;
+import and.fast.video.effect.GlVideoView;
+import and.fast.video.effect.composer.Mp4Composer;
+import and.fast.video.effect.helper.MagicFilterFactory;
+import and.fast.video.effect.helper.MagicFilterType;
+import and.fast.video.effect.utils.ConfigUtils;
 import and.fast.video.eidtor.Constant;
 import and.fast.video.eidtor.adapter.TrimVideoAdapter;
 import and.fast.video.eidtor.model.TrimVideoConfigModel;
