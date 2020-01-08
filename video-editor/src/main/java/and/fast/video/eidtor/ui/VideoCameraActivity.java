@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.io.File;
 
 import and.fast.video.editor.R;
+import and.fast.video.eidtor.Constant;
 import and.fast.video.record.JCameraView;
 import and.fast.video.record.listener.ErrorListener;
 import and.fast.video.record.listener.JCameraListener;
@@ -58,7 +59,7 @@ public class VideoCameraActivity extends AppCompatActivity {
         mJCameraView.setMinDuration(mMinDuration * 1000); //设置最短录制时长
         mJCameraView.setDuration(mMaxDuration * 1000); //设置最长录制时长
         mJCameraView.setFeatures(JCameraView.BUTTON_STATE_ONLY_RECORDER);
-        mJCameraView.setTip(String.format("长按拍摄, %d~%d秒", mMaxDuration, mMaxDuration));
+        mJCameraView.setTip(String.format("长按拍摄, %d~%d秒", mMinDuration, mMaxDuration));
         mJCameraView.setRecordShortTip(String.format("录制时间%d~%d秒", mMaxDuration, mMaxDuration));
         mJCameraView.setMediaQuality(JCameraView.MEDIA_QUALITY_MIDDLE);
         mJCameraView.setErrorLisenter(new ErrorListener() {
@@ -91,8 +92,11 @@ public class VideoCameraActivity extends AppCompatActivity {
                 //获取视频路径
                 String path = FileUtil.saveBitmap("small_video", firstFrame);
                 //url:/storage/emulated/0/haodiaoyu/small_video/video_1508930416375.mp4, Bitmap:/storage/emulated/0/haodiaoyu/small_video/picture_1508930429832.jpg
-                Log.d("CJT", "url:" + url + ", firstFrame:" + path);
+                //Log.d("CJT", "url:" + url + ", firstFrame:" + path);
 
+                setResult(200, new Intent()
+                        .putExtra(Constant.RESULT_VIDEO_PATH, path)
+                        .putExtra(Constant.RESULT_FIRST_FRAME_IMAGE_PATH, firstFrame));
                 //TrimVideoActivity.startActivity(VideoCameraActivity.this, url);
                 finish();
             }

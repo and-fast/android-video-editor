@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity {
                 public void onNext(Boolean granted) {
                     if (granted) { //已获取权限
                         Intent intent = new Intent(MainActivity.this, VideoCameraActivity.class);
-                        startActivityForResult(intent, 100);
+                        startActivityForResult(intent, 101);
                     } else {
                         Toast.makeText(MainActivity.this, "给点权限行不行？", Toast.LENGTH_SHORT).show();
                     }
