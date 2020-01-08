@@ -1,37 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  tools:context=".ui.activity.MainActivity">
-
-  <include layout="@layout/toolbar"/>
-
-  <Button
-    android:id="@+id/btn_camera"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/colorAccent"
-    android:layout_marginTop="200dp"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
-    android:onClick="takeCamera"
-    android:textColor="@android:color/white"
-    android:text="拍摄"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
 
-  <Button
-    android:id="@+id/btn_album"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/purple"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
-    android:onClick="takeAlbum"
-    android:textColor="@android:color/white"
-    android:text="相册"/>
+    <include layout="@layout/toolbar" />
 
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/colorAccent"
+        android:onClick="takeCamera"
+        android:text="拍摄"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_album"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/purple"
+        android:onClick="takeAlbum"
+        android:text="相册"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_path"
+            android:layout_width="wrap_content"
+            tools:text="路径"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_margin="16dp"
+            android:id="@+id/iv_cover"
+            android:layout_width="128dp"
+            android:layout_height="128dp"/>
+    </LinearLayout>
 </LinearLayout>

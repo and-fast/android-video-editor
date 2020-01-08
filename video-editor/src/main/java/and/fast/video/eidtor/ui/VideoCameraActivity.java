@@ -1,4 +1,4 @@
-package and.fast.video.eidtor.ui.activity;
+package and.fast.video.eidtor.ui;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -94,7 +94,7 @@ public class VideoCameraActivity extends AppCompatActivity {
                 //url:/storage/emulated/0/haodiaoyu/small_video/video_1508930416375.mp4, Bitmap:/storage/emulated/0/haodiaoyu/small_video/picture_1508930429832.jpg
                 Log.d("CJT", "url:" + url + ", firstFrame:" + path);
 
-                TrimVideoActivity.startActivity(VideoCameraActivity.this, url);
+                //TrimVideoActivity.startActivity(VideoCameraActivity.this, url);
                 finish();
             }
 

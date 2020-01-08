@@ -1,5 +1,6 @@
 package com.marvhong.videoeditor.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import and.fast.video.eidtor.model.LocalVideoModel;
-import and.fast.video.eidtor.ui.activity.TrimVideoActivity;
 import and.fast.video.eidtor.utils.VideoUtil;
 import butterknife.BindView;
 import io.reactivex.Observer;
@@ -29,8 +29,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class VideoAlbumActivity extends BaseActivity implements VideoGridAdapter.OnItemClickListener {
 
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private List<LocalVideoModel> mLocalVideoModels = new ArrayList<>();
     private VideoGridAdapter      mAdapter;
@@ -94,13 +93,20 @@ public class VideoAlbumActivity extends BaseActivity implements VideoGridAdapter
 //        intent.putExtra("videoPath", model.getVideoPath());
 //        startActivityForResult(intent, 100);
 
-        TrimVideoActivity.startActivity(this, model.getVideoPath());
+        setResult(Activity.RESULT_OK, new Intent().putExtra("result",model.getVideoPath()));
         finish();
+        //TrimVideoActivity.startActivity(this, model.getVideoPath());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         mLocalVideoModels = null;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }

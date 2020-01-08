@@ -6,12 +6,12 @@
         android:supportsRtl="true">
 
         <activity
-            android:name="and.fast.video.eidtor.ui.activity.VideoCameraActivity"
+            android:name="and.fast.video.eidtor.ui.VideoCameraActivity"
             android:configChanges="keyboard|orientation|screenSize"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="and.fast.video.eidtor.ui.activity.TrimVideoActivity"
+            android:name="and.fast.video.eidtor.ui.TrimVideoActivity"
             android:configChanges="keyboard|orientation|screenSize"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait" />

@@ -96,12 +96,12 @@ public class VideoExtractFrameAsyncUtils {
 //        float scaleHeight =extractH*1.0f / height;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleWidth, scaleWidth);
-        Bitmap newBm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,
-                true);
+        Bitmap newBm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+
         if (!bm.isRecycled()) {
             bm.recycle();
-            bm = null;
         }
+
         return newBm;
     }
 

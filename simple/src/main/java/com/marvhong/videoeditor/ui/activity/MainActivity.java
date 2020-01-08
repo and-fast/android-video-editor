@@ -1,20 +1,30 @@
 package com.marvhong.videoeditor.ui.activity;
 
 import android.Manifest.permission;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.base.BaseActivity;
 import com.marvhong.videoeditor.helper.ToolbarHelper;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import and.fast.video.eidtor.ui.activity.VideoCameraActivity;
+import and.fast.video.eidtor.Constant;
+import and.fast.video.eidtor.model.TrimVideoConfigModel;
+import and.fast.video.eidtor.ui.TrimVideoActivity;
+import and.fast.video.eidtor.ui.VideoCameraActivity;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends BaseActivity {
+
+    private TextView mTvPath;
+    private ImageView mIvCover;
 
     private RxPermissions mRxPermissions;
 
@@ -32,12 +42,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         mRxPermissions = new RxPermissions(this);
+        mTvPath = findViewById(R.id.tv_path);
+        mIvCover = findViewById(R.id.iv_cover);
     }
 
-    /**
-     * 拍照
-     * @param view
-     */
     public void takeCamera(View view) {
         mRxPermissions
             .request(permission.WRITE_EXTERNAL_STORAGE, permission.RECORD_AUDIO, permission.CAMERA)
@@ -69,10 +77,6 @@ public class MainActivity extends BaseActivity {
             });
     }
 
-    /**
-     * 相册
-     * @param view
-     */
     public void takeAlbum(View view) {
         mRxPermissions
             .request(permission.WRITE_EXTERNAL_STORAGE,permission.READ_EXTERNAL_STORAGE)
@@ -102,5 +106,23 @@ public class MainActivity extends BaseActivity {
 
                 }
             });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK){ // 选择视频
+            String path = data.getStringExtra("result");
+            TrimVideoConfigModel model = new TrimVideoConfigModel();
+            model.setPath(path);
+            model.setMinDuration(3);
+            model.setMaxDuration(15);
+            startActivityForResult(TrimVideoActivity.newIntent(this, model), 101);
+
+        } else if (requestCode == 101 && resultCode == Activity.RESULT_OK){
+            mTvPath.setText(data.getStringExtra(Constant.RESULT_VIDEO_PATH));
+            String firstFrame = data.getStringExtra(Constant.RESULT_FIRST_FRAME_IMAGE_PATH);
+            Glide.with(this).load(firstFrame).into(mIvCover);
+        }
     }
 }
