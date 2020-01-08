@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +20,8 @@ import and.fast.video.record.listener.ErrorListener;
 import and.fast.video.record.listener.JCameraListener;
 import and.fast.video.record.listener.RecordStateListener;
 import and.fast.video.record.util.FileUtil;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class VideoCameraActivity extends AppCompatActivity {
 

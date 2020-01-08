@@ -1,4 +1,4 @@
-package com.marvhong.videoeditor.ui.activity;
+package and.fast.simple.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
-import com.marvhong.videoeditor.App;
-import com.marvhong.videoeditor.R;
-import com.marvhong.videoeditor.base.BaseActivity;
 
+import and.fast.simple.App;
+import and.fast.simple.base.BaseActivity;
+import and.fast.simple.videoe.R;
 import butterknife.BindView;
 import butterknife.OnClick;
 

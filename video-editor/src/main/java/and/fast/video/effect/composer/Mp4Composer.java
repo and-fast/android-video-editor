@@ -1,7 +1,6 @@
 package and.fast.video.effect.composer;
 
 import android.media.MediaMetadataRetriever;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.File;
@@ -17,6 +16,7 @@ import and.fast.video.effect.Resolution;
 import and.fast.video.effect.Rotation;
 import and.fast.video.effect.filter.IResolutionFilter;
 import and.fast.video.effect.filter.base.GlFilter;
+import androidx.annotation.NonNull;
 
 /**
  * Created by sudamasayuki on 2017/11/15.

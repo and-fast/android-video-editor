@@ -1,9 +1,10 @@
-package com.marvhong.videoeditor;
+package and.fast.simple;
 
 import android.app.Application;
 import android.content.Context;
 
 import and.fast.video.eidtor.utils.UIUtils;
+import androidx.multidex.MultiDex;
 
 /**
  * @author LLhon
@@ -21,5 +22,6 @@ public class App extends Application {
         super.onCreate();
         sApplication = getApplicationContext();
         UIUtils.register(this);
+        MultiDex.install(this);
     }
 }

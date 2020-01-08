@@ -1,7 +1,6 @@
 package and.fast.video.eidtor.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import and.fast.video.editor.R;
 import and.fast.video.eidtor.model.VideoEditInfo;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TrimVideoAdapter extends RecyclerView.Adapter {
 

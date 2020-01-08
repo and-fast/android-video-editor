@@ -1,10 +1,11 @@
-package com.marvhong.videoeditor.helper;
+package and.fast.simple.helper;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import com.marvhong.videoeditor.R;
+
+import and.fast.simple.videoe.R;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * @author LLhon
@@ -15,7 +16,7 @@ import com.marvhong.videoeditor.R;
  */
 public class ToolbarHelper {
 
-    private Toolbar mToolbar;
+    private Toolbar   mToolbar;
     private ActionBar mActionBar;
 
     public ToolbarHelper(Toolbar toolbar, ActionBar actionBar) {

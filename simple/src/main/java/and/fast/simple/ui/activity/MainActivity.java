@@ -1,4 +1,4 @@
-package com.marvhong.videoeditor.ui.activity;
+package and.fast.simple.ui.activity;
 
 import android.Manifest.permission;
 import android.app.Activity;
@@ -9,11 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.marvhong.videoeditor.R;
-import com.marvhong.videoeditor.base.BaseActivity;
-import com.marvhong.videoeditor.helper.ToolbarHelper;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import and.fast.simple.base.BaseActivity;
+import and.fast.simple.helper.ToolbarHelper;
+import and.fast.simple.videoe.R;
 import and.fast.video.eidtor.Constant;
 import and.fast.video.eidtor.model.TrimVideoConfigModel;
 import and.fast.video.eidtor.ui.TrimVideoActivity;

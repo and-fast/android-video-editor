@@ -1,21 +1,20 @@
-package com.marvhong.videoeditor.ui.activity;
+package and.fast.simple.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
-import com.marvhong.videoeditor.R;
-import com.marvhong.videoeditor.adapter.VideoGridAdapter;
-import com.marvhong.videoeditor.base.BaseActivity;
-import com.marvhong.videoeditor.helper.ToolbarHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import and.fast.simple.adapter.VideoGridAdapter;
+import and.fast.simple.base.BaseActivity;
+import and.fast.simple.helper.ToolbarHelper;
+import and.fast.simple.videoe.R;
 import and.fast.video.eidtor.model.LocalVideoModel;
 import and.fast.video.eidtor.utils.VideoUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

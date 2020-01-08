@@ -9,7 +9,6 @@ import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -36,6 +35,7 @@ import and.fast.video.record.util.FileUtil;
 import and.fast.video.record.util.LogUtil;
 import and.fast.video.record.util.ScreenUtils;
 import and.fast.video.record.view.CameraView;
+import androidx.annotation.RequiresApi;
 
 
 /**

@@ -9,7 +9,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,6 +19,7 @@ import java.text.DecimalFormat;
 
 import and.fast.video.editor.R;
 import and.fast.video.eidtor.utils.UIUtils;
+import androidx.annotation.Nullable;
 
 
 public class RangeSeekBar extends View {

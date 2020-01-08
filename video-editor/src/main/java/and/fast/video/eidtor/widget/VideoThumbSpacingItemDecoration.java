@@ -1,9 +1,9 @@
 package and.fast.video.eidtor.widget;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class VideoThumbSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
@@ -16,7 +16,7 @@ public class VideoThumbSpacingItemDecoration extends RecyclerView.ItemDecoration
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state) {
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildAdapterPosition(view);
         //第一个与最后一个添加空白间距
         if (position == 0) {

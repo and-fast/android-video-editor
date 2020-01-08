@@ -1,7 +1,6 @@
-package com.marvhong.videoeditor.adapter;
+package and.fast.simple.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.marvhong.videoeditor.R;
 
 import java.util.List;
 
+import and.fast.simple.videoe.R;
 import and.fast.video.eidtor.model.LocalVideoModel;
 import and.fast.video.eidtor.utils.UIUtils;
 import and.fast.video.eidtor.utils.VideoUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author LLhon

@@ -3,11 +3,11 @@ package and.fast.video.record;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import and.fast.video.record.util.ScreenUtils;
+import androidx.annotation.Nullable;
 
 /**
  * =====================================
