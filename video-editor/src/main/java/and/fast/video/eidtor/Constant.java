@@ -5,8 +5,6 @@ package and.fast.video.eidtor;
  */
 public interface Constant {
 
-    String EXT_VIDEO_PATH = "VIDEO_PATH";
-
     String EXT_TRIM_CONFIG_MODEL = "TRIM_CONFIG_MODEL";
 
     // 压缩视频
@@ -23,4 +21,6 @@ public interface Constant {
 
     // 返回第一帧图片路径
     String RESULT_FIRST_FRAME_IMAGE_PATH = "RESULT_FIRST_FRAME_IMAGE_PATH";
+
+    String RESULT_FIRST_FRAME_IMAGE_BITMAP = "RESULT_FIRST_FRAME_IMAGE_BITMAP";
 }

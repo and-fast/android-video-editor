@@ -107,15 +107,14 @@ public class CameraMachine implements State {
     }
 
     @Override
-    public void cancle(SurfaceHolder holder, float screenProp) {
-        state.cancle(holder, screenProp);
+    public void cancel(SurfaceHolder holder, float screenProp) {
+        state.cancel(holder, screenProp);
     }
 
     @Override
     public void confirm() {
         state.confirm();
     }
-
 
     @Override
     public void zoom(float zoom, int type) {

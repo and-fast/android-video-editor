@@ -61,23 +61,23 @@ public class CameraInterface implements Camera.PreviewCallback {
         }
     }
 
-    private Camera mCamera;
+    private Camera            mCamera;
     private Camera.Parameters mParams;
-    private boolean isPreviewing = false;
+    private boolean           isPreviewing = false;
 
-    private int SELECTED_CAMERA = -1;
-    private int CAMERA_POST_POSITION = -1;
+    private int SELECTED_CAMERA       = -1;
+    private int CAMERA_POST_POSITION  = -1;
     private int CAMERA_FRONT_POSITION = -1;
 
-    private SurfaceHolder mHolder = null;
-    private float screenProp = -1.0f;
+    private SurfaceHolder mHolder    = null;
+    private float         screenProp = -1.0f;
 
-    private boolean isRecorder = false;
+    private boolean       isRecorder      = false;
     private MediaRecorder mediaRecorder;
-    private String videoFileName;
-    private String saveVideoPath;
-    private String videoFileAbsPath;
-    private Bitmap videoFirstFrame = null;
+    private String        videoFileName;
+    private String        saveVideoPath;
+    private String        videoFileAbsPath;
+    private Bitmap        videoFirstFrame = null;
 
     private ErrorListener errorLisenter;
 
@@ -87,19 +87,19 @@ public class CameraInterface implements Camera.PreviewCallback {
     private int preview_width;
     private int preview_height;
 
-    private int angle = 0;
-    private int cameraAngle = 90;//摄像头角度   默认为90度
-    private int rotation = 0;
+    private int    angle       = 0;
+    private int    cameraAngle = 90;//摄像头角度   默认为90度
+    private int    rotation    = 0;
     private byte[] firstFrame_data;
 
-    public static final int TYPE_RECORDER = 0x090;
-    public static final int TYPE_CAPTURE = 0x091;
-    private int nowScaleRate = 0;
-    private int recordScleRate = 0;
+    public static final int TYPE_RECORDER  = 0x090;
+    public static final int TYPE_CAPTURE   = 0x091;
+    private             int nowScaleRate   = 0;
+    private             int recordScleRate = 0;
 
     //视频质量
-    private int mediaQuality = JCameraView.MEDIA_QUALITY_MIDDLE;
-    private SensorManager sm = null;
+    private int           mediaQuality = JCameraView.MEDIA_QUALITY_MIDDLE;
+    private SensorManager sm           = null;
 
     //获取CameraInterface单例
     public static synchronized CameraInterface getInstance() {
@@ -490,17 +490,18 @@ public class CameraInterface implements Camera.PreviewCallback {
         });
     }
 
-    //启动录像
+    // 启动录像
     public void startRecord(Surface surface, float screenProp, ErrorCallback callback) {
         mCamera.setPreviewCallback(null);
         final int nowAngle = (angle + 90) % 360;
-        //获取第一帧图片
+
+        // 获取第一帧图片
         Camera.Parameters parameters = mCamera.getParameters();
         int width = parameters.getPreviewSize().width;
         int height = parameters.getPreviewSize().height;
-        YuvImage yuv = new YuvImage(firstFrame_data, parameters.getPreviewFormat(), width, height, null);
+        YuvImage yuv = new YuvImage(firstFrame_data, ImageFormat.NV21, width, height, null);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        yuv.compressToJpeg(new Rect(0, 0, width, height), 50, out);
+        yuv.compressToJpeg(new Rect(0, 0, width, height), 20, out);
         byte[] bytes = out.toByteArray();
         videoFirstFrame = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         Matrix matrix = new Matrix();
@@ -509,52 +510,54 @@ public class CameraInterface implements Camera.PreviewCallback {
         } else if (SELECTED_CAMERA == CAMERA_FRONT_POSITION) {
             matrix.setRotate(270);
         }
-        videoFirstFrame = createBitmap(videoFirstFrame, 0, 0, videoFirstFrame.getWidth(), videoFirstFrame
-                .getHeight(), matrix, true);
+
+        videoFirstFrame = createBitmap(videoFirstFrame, 0, 0, videoFirstFrame.getWidth(), videoFirstFrame.getHeight(), matrix, true);
 
         if (isRecorder) {
             return;
         }
+
         if (mCamera == null) {
             openCamera(SELECTED_CAMERA);
         }
+
         if (mediaRecorder == null) {
             mediaRecorder = new MediaRecorder();
         }
+
         if (mParams == null) {
             mParams = mCamera.getParameters();
         }
+
         List<String> focusModes = mParams.getSupportedFocusModes();
         if (focusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
             mParams.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
+
         mCamera.setParameters(mParams);
         mCamera.unlock();
         mediaRecorder.reset();
         mediaRecorder.setCamera(mCamera);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
 
-
         Camera.Size videoSize;
         if (mParams.getSupportedVideoSizes() == null) {
-            videoSize = CameraParamUtil.getInstance().getPreviewSize(mParams.getSupportedPreviewSizes(), 600,
-                    screenProp);
+            videoSize = CameraParamUtil.getInstance().getPreviewSize(mParams.getSupportedPreviewSizes(), 600, screenProp);
         } else {
-            videoSize = CameraParamUtil.getInstance().getPreviewSize(mParams.getSupportedVideoSizes(), 600,
-                    screenProp);
+            videoSize = CameraParamUtil.getInstance().getPreviewSize(mParams.getSupportedVideoSizes(), 600, screenProp);
         }
+
         Log.i(TAG, "setVideoSize    width = " + videoSize.width + "height = " + videoSize.height);
         if (videoSize.width == videoSize.height) {
             mediaRecorder.setVideoSize(preview_width, preview_height);
         } else {
             mediaRecorder.setVideoSize(videoSize.width, videoSize.height);
         }
+
 //        if (SELECTED_CAMERA == CAMERA_FRONT_POSITION) {
 //            mediaRecorder.setOrientationHint(270);
 //        } else {
@@ -563,9 +566,9 @@ public class CameraInterface implements Camera.PreviewCallback {
 //        }
 
         if (SELECTED_CAMERA == CAMERA_FRONT_POSITION) {
-            //手机预览倒立的处理
+            // 手机预览倒立的处理
             if (cameraAngle == 270) {
-                //横屏
+                // 横屏
                 if (nowAngle == 0) {
                     mediaRecorder.setOrientationHint(180);
                 } else if (nowAngle == 270) {
@@ -592,6 +595,7 @@ public class CameraInterface implements Camera.PreviewCallback {
         } else {
             mediaRecorder.setVideoEncodingBitRate(mediaQuality);
         }
+
         mediaRecorder.setPreviewDisplay(surface);
 
         videoFileName = "video_" + System.currentTimeMillis() + ".mp4";

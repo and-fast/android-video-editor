@@ -882,12 +882,15 @@ public class VideoUtil {
         if (bmp == null) {
             return "";
         }
+
         File appDir = new File(dirPath);
         if (!appDir.exists()) {
             appDir.mkdir();
         }
+
         String fileName = System.currentTimeMillis() + ".jpg";
         File file = new File(appDir, fileName);
+
         try {
             FileOutputStream fos = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
@@ -896,9 +899,9 @@ public class VideoUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return file.getAbsolutePath();
     }
-
 
     public static String saveImageToSDForEdit(Bitmap bmp, String dirPath, String fileName) {
         if (bmp == null) {
@@ -929,6 +932,7 @@ public class VideoUtil {
                 }
             }
         }
+
         f.delete();
     }
 
@@ -938,10 +942,12 @@ public class VideoUtil {
             state.equals(Environment.MEDIA_MOUNTED) ? context.getExternalCacheDir()
                 : context.getCacheDir();
         File folderDir = new File(rootDir.getAbsolutePath() + File.separator + TRIM_PATH + File.separator + THUMB_PATH);
+
         if (folderDir == null) {
             folderDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                 + File.separator + "videoeditor" + File.separator + "picture");
         }
+
         if (!folderDir.exists() && folderDir.mkdirs()) {
 
         }

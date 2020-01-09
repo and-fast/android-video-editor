@@ -55,29 +55,29 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     //闪关灯状态
     private static final int TYPE_FLASH_AUTO = 0x021;
-    private static final int TYPE_FLASH_ON = 0x022;
-    private static final int TYPE_FLASH_OFF = 0x023;
-    private int type_flash = TYPE_FLASH_OFF;
+    private static final int TYPE_FLASH_ON   = 0x022;
+    private static final int TYPE_FLASH_OFF  = 0x023;
+    private              int type_flash      = TYPE_FLASH_OFF;
 
     //拍照浏览时候的类型
     public static final int TYPE_PICTURE = 0x001;
-    public static final int TYPE_VIDEO = 0x002;
-    public static final int TYPE_SHORT = 0x003;
+    public static final int TYPE_VIDEO   = 0x002;
+    public static final int TYPE_SHORT   = 0x003;
     public static final int TYPE_DEFAULT = 0x004;
 
     //录制视频比特率
-    public static final int MEDIA_QUALITY_HIGH = 20 * 100000;
-    public static final int MEDIA_QUALITY_MIDDLE = 16 * 100000;
-    public static final int MEDIA_QUALITY_LOW = 12 * 100000;
-    public static final int MEDIA_QUALITY_POOR = 8 * 100000;
-    public static final int MEDIA_QUALITY_FUNNY = 4 * 100000;
+    public static final int MEDIA_QUALITY_HIGH    = 20 * 100000;
+    public static final int MEDIA_QUALITY_MIDDLE  = 16 * 100000;
+    public static final int MEDIA_QUALITY_LOW     = 12 * 100000;
+    public static final int MEDIA_QUALITY_POOR    = 8 * 100000;
+    public static final int MEDIA_QUALITY_FUNNY   = 4 * 100000;
     public static final int MEDIA_QUALITY_DESPAIR = 2 * 100000;
-    public static final int MEDIA_QUALITY_SORRY = 1 * 80000;
+    public static final int MEDIA_QUALITY_SORRY   = 1 * 80000;
 
 
-    public static final int BUTTON_STATE_ONLY_CAPTURE = 0x101;      //只能拍照
+    public static final int BUTTON_STATE_ONLY_CAPTURE  = 0x101;      //只能拍照
     public static final int BUTTON_STATE_ONLY_RECORDER = 0x102;     //只能录像
-    public static final int BUTTON_STATE_BOTH = 0x103;              //两者都可以
+    public static final int BUTTON_STATE_BOTH          = 0x103;              //两者都可以
 
 
     //回调监听
@@ -96,7 +96,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private FoucsView     mFoucsView;
     private MediaPlayer   mMediaPlayer;
 
-    private int layout_width;
+    private int   layout_width;
     private float screenProp = 0f;
 
     private Bitmap captureBitmap;   //捕获的图片
@@ -105,20 +105,20 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
 
     //切换摄像头按钮的参数
-    private int iconSize = 0;       //图标大小
-    private int iconMargin = 0;     //右上边距
-    private int iconSrc = 0;        //图标资源
-    private int iconLeft = 0;       //左图标
-    private int iconRight = 0;      //右图标
-    private int duration = 0;       //录制时间
-    private int minDuration = 0; //最短录制时长
+    private int iconSize;       //图标大小
+    private int iconMargin;     //右上边距
+    private int iconSrc;        //图标资源
+    private int iconLeft;       //左图标
+    private int iconRight;      //右图标
+    private int duration;       //录制时间
+    private int minDuration; //最短录制时长
 
     //缩放梯度
     private int zoomGradient = 0;
 
-    private boolean firstTouch = true;
-    private float firstTouchLength = 0;
-    private String mRecordShortTip = "录制时间过短";
+    private boolean firstTouch       = true;
+    private float   firstTouchLength = 0;
+    private String  mRecordShortTip  = "录制时间过短";
 
     public JCameraView(Context context) {
         this(context, null);
@@ -254,7 +254,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mCaptureLayout.setTypeLisenter(new TypeListener() {
             @Override
             public void cancel() {
-                machine.cancle(mVideoView.getHolder(), screenProp);
+                machine.cancel(mVideoView.getHolder(), screenProp);
                 if (mRecordStateListener != null) {
                     mRecordStateListener.recordCancel();
                 }
@@ -453,10 +453,11 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     /**
      * 设置最长录制时长
+     *
      * @param duration
      */
     public void setDuration(int duration) {
-        duration = duration;
+        this.duration = duration;
         if (mCaptureLayout != null) {
             mCaptureLayout.setDuration(duration);
         }
@@ -464,10 +465,11 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     /**
      * 设置最短录制时长
+     *
      * @param minDuration
      */
     public void setMinDuration(int minDuration) {
-        minDuration = minDuration;
+        this.minDuration = minDuration;
         if (mCaptureLayout != null) {
             mCaptureLayout.setMinDuration(minDuration);
         }
@@ -477,8 +479,8 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     public void resetState(int type) {
         switch (type) {
             case TYPE_VIDEO:
-                stopVideo();    //停止播放
-                //初始化VideoView
+                stopVideo();    // 停止播放
+                // 初始化VideoView
                 FileUtil.deleteFile(videoUrl);
                 mVideoView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 machine.start(mVideoView.getHolder(), screenProp);
@@ -492,6 +494,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 mVideoView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 break;
         }
+
         mSwitchCamera.setVisibility(VISIBLE);
 //        mFlashLamp.setVisibility(VISIBLE);
         mCaptureLayout.resetCaptureLayout();
@@ -519,6 +522,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             case TYPE_DEFAULT:
                 break;
         }
+
         mCaptureLayout.resetCaptureLayout();
     }
 
@@ -529,6 +533,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         } else {
             mPhoto.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
+
         captureBitmap = bitmap;
         mPhoto.setImageBitmap(bitmap);
         mPhoto.setVisibility(VISIBLE);
@@ -554,21 +559,25 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                     mMediaPlayer.setSurface(mVideoView.getHolder().getSurface());
                     mMediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT);
                     mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer
-                            .OnVideoSizeChangedListener() {
+
+                    mMediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+
                         @Override
                         public void
                         onVideoSizeChanged(MediaPlayer mp, int width, int height) {
                             updateVideoViewSize(mMediaPlayer.getVideoWidth(), mMediaPlayer
                                     .getVideoHeight());
                         }
+
                     });
+
                     mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
                         public void onPrepared(MediaPlayer mp) {
                             mMediaPlayer.start();
                         }
                     });
+
                     mMediaPlayer.setLooping(true);
                     mMediaPlayer.prepare();
                 } catch (IOException e) {
@@ -605,19 +614,24 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         if (y > mCaptureLayout.getTop()) {
             return false;
         }
+
         mFoucsView.setVisibility(VISIBLE);
         if (x < mFoucsView.getWidth() / 2) {
             x = mFoucsView.getWidth() / 2;
         }
+
         if (x > layout_width - mFoucsView.getWidth() / 2) {
             x = layout_width - mFoucsView.getWidth() / 2;
         }
+
         if (y < mFoucsView.getWidth() / 2) {
             y = mFoucsView.getWidth() / 2;
         }
+
         if (y > mCaptureLayout.getTop() - mFoucsView.getWidth() / 2) {
             y = mCaptureLayout.getTop() - mFoucsView.getWidth() / 2;
         }
+
         mFoucsView.setX(x - mFoucsView.getWidth() / 2);
         mFoucsView.setY(y - mFoucsView.getHeight() / 2);
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(mFoucsView, "scaleX", 1, 0.6f);
