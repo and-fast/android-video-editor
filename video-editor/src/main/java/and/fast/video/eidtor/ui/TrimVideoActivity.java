@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
@@ -627,17 +626,17 @@ public class TrimVideoActivity extends AppCompatActivity {
         mUIHandler.removeCallbacksAndMessages(null);
 
         // 删除视频每一帧的预览图
-        if (!TextUtils.isEmpty(OutPutFileDirPath)) {
+//        if (!TextUtils.isEmpty(OutPutFileDirPath)) {
             // TODO
             // VideoUtil.deleteFile(new File(OutPutFileDirPath));
-        }
+//        }
 
         // 删除裁剪后的视频，滤镜视频
-        String trimmedDirPath = VideoUtil.getTrimmedVideoDir(this, Constant.TRIMMER_VIDEO_DIR_NAME);
-        if (!TextUtils.isEmpty(trimmedDirPath)) {
+//        String trimmedDirPath = VideoUtil.getTrimmedVideoDir(this, Constant.TRIMMER_VIDEO_DIR_NAME);
+//        if (!TextUtils.isEmpty(trimmedDirPath)) {
             // TODO
             // VideoUtil.deleteFile(new File(trimmedDirPath));
-        }
+//        }
 
         unsubscribe();
         super.onDestroy();

@@ -111,27 +111,6 @@ public class VideoCameraActivity extends AppCompatActivity {
         });
 
         mJCameraView.setLeftClickListener(this::finish);
-
-//        mJCameraView.setRightClickListener(() -> Toast.makeText(VideoCameraActivity.this, "Right", Toast.LENGTH_SHORT).show());
-
-//        mJCameraView.setRecordStateListener(new RecordStateListener() {
-//
-//            @Override
-//            public void recordStart() {
-//
-//            }
-//
-//            @Override
-//            public void recordEnd(long time) {
-//                Log.e("录制状态回调", "录制时长：" + time);
-//            }
-//
-//            @Override
-//            public void recordCancel() {
-//                // 录音取消
-//            }
-//
-//        });
     }
 
     @Override
