@@ -48,6 +48,6 @@ dependencies {
 
     // 视频剪辑
     implementation project(':video-editor')
-//    implementation 'com.github.and-fast:android-video-editor:0.1-beta5'
+//    implementation 'com.github.and-fast:android-video-editor:0.1-beta6'
 
 }
