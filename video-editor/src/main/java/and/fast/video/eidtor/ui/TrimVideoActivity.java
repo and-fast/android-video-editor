@@ -328,6 +328,7 @@ public class TrimVideoActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         NormalProgressDialog.stopLoading();
+//                        Toast.makeText(TrimVideoActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(TrimVideoActivity.this, "视频裁剪失败", Toast.LENGTH_SHORT).show();
                     }
 
@@ -375,7 +376,7 @@ public class TrimVideoActivity extends AppCompatActivity {
                     public void onFailed(Exception exception) {
                         NormalProgressDialog.stopLoading();
                         exception.printStackTrace();
-                        //Toast.makeText(TrimVideoActivity.this, "视频处理失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TrimVideoActivity.this, "视频处理失败", Toast.LENGTH_SHORT).show();
                     }
 
                 })

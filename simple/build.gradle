@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "and.fast.simple.videoe"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -26,12 +26,13 @@ android {
 
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
             signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -62,7 +63,8 @@ dependencies {
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     // 视频剪辑
+    implementation 'com.googlecode.mp4parser:isoparser:1.1.22'
     implementation project(':video-editor')
-//    implementation 'com.github.and-fast:android-video-editor:0.1'
+//    implementation 'com.github.and-fast:android-video-editor:0.1-beta8'
 
 }
